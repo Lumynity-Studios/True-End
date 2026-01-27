@@ -101,12 +101,11 @@ public final class TrueEndCommon {
 
     private static class WorkItem {
         final Runnable task;
-        final AtomicInteger ticksRemaining;
-
+        int ticksRemaining;
 
         WorkItem(Runnable task, int delay) {
             this.task = task;
-            this.ticksRemaining = new AtomicInteger(delay);
+            this.ticksRemaining = delay;
         }
     }
 
@@ -117,7 +116,7 @@ public final class TrueEndCommon {
     public static void processQueue() {
         for (Iterator<WorkItem> iterator = workQueue.iterator(); iterator.hasNext();) {
             WorkItem item = iterator.next();
-            if (item.ticksRemaining.decrementAndGet() <= 0) {
+            if (item.ticksRemaining <= 0) {
                 item.task.run();
                 iterator.remove(); // safe to remove in ConcurrentLinkedQueue
             }
