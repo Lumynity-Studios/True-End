@@ -39,7 +39,7 @@ public class BlackScreenSeepingReality {
             for (int i = 0; i < repeats; i++) {
                 BlackOverlay.call(serverPlayer);
                 int dur = rng.nextInt(3) + 1; // 1–3 ticks
-                TrueEnd.queueServerWork(dur, player::closeContainer);
+                TrueEnd.wait(dur, player::closeContainer);
             }
         }
 
@@ -48,10 +48,10 @@ public class BlackScreenSeepingReality {
             for (int i = 0; i < repeats; i++) {
                 BlackOverlay.call(serverPlayer);
                 int d = rng.nextInt(3) + 1;  // 1–3 ticks
-                TrueEnd.queueServerWork(d, player::closeContainer);
+                TrueEnd.wait(d, player::closeContainer);
             }
             BlackOverlay.call(serverPlayer);
-            TrueEnd.queueServerWork(100, () -> {
+            TrueEnd.wait(100, () -> {
                 if (player instanceof ServerPlayer sp) {
                     ServerLevel sLevel = (ServerLevel) sp.level();
                     BlockPos resp = sp.getRespawnPosition();
@@ -83,7 +83,7 @@ public class BlackScreenSeepingReality {
             int repeats = 3 + rng.nextInt(MAX_REPEATS - 3 + 1);
             for (int i = 0; i < repeats; i++) {
                 BlackOverlay.call(serverPlayer);
-                TrueEnd.queueServerWork(flashDur, player::closeContainer);
+                TrueEnd.wait(flashDur, player::closeContainer);
             }
         }
 

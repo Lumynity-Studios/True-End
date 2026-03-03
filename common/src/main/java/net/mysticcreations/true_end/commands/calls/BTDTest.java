@@ -10,8 +10,7 @@ import net.mysticcreations.true_end.TrueEnd;
 public class BTDTest {
     // TODO: Optimize this bullshit
     public static void execute(LevelAccessor world, Entity entity) {
-        if (entity == null)
-            return;
+        if (entity == null) return;
         {
             Entity _ent = entity;
             if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -19,7 +18,7 @@ public class BTDTest {
                         _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "setblock ~ ~ ~ minecraft:end_portal");
             }
         }
-        TrueEnd.queueServerWork(30, () -> {
+        TrueEnd.wait(30, () -> {
             {
                 Entity _ent = entity;
                 if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -28,7 +27,7 @@ public class BTDTest {
                 }
             }
         });
-        TrueEnd.queueServerWork(5, () -> {
+        TrueEnd.wait(5, () -> {
             {
                 Entity _ent = entity;
                 if (!_ent.level().isClientSide() && _ent.getServer() != null) {

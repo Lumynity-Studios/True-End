@@ -38,7 +38,7 @@ public class ChatReplies {
     }
     private static void sendChatReply(LevelAccessor world, String msg, Integer delay) {
         if (!world.isClientSide() && world.getServer() != null) {
-            TrueEnd.queueServerWork(delay, () -> {
+            TrueEnd.wait(delay, () -> {
                 MinecraftServer server = world.getServer();
                 server.getPlayerList().broadcastSystemMessage(Component.literal(msg), false);
             });
@@ -111,10 +111,10 @@ public class ChatReplies {
         String textA = "§7§o["+playerName+"'s game mode has been changed to Adventure Mode by §kUnknown§r§7§o]";
         String textS = "§7§o["+playerName+"'s game mode has been changed to Survival Mode by §kUnknown§r§7§o]";
 
-        TrueEnd.queueServerWork(delay, () -> {
+        TrueEnd.wait(delay, () -> {
             player.setGameMode(GameType.ADVENTURE);
             server.getPlayerList().broadcastSystemMessage(Component.literal(textA), false);
-            TrueEnd.queueServerWork(6000, () -> {
+            TrueEnd.wait(6000, () -> {
                 player.setGameMode(GameType.SURVIVAL);
                 server.getPlayerList().broadcastSystemMessage(Component.literal(textS), false);
             });
@@ -124,7 +124,7 @@ public class ChatReplies {
         sendChatReply(world, "<§kUnknown§r> 4D79206661766F72697465", delay);
         Level level = player.level();
 
-        TrueEnd.queueServerWork(delay*2, () -> {
+        TrueEnd.wait(delay*2, () -> {
             level.playSound(
                     null,
                     BlockPos.containing(player.getX()+8, player.getY(), player.getZ()-8),

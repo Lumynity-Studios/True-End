@@ -14,8 +14,6 @@ import net.mysticcreations.true_end.init.TEBlocks;
 
 import static net.minecraft.world.level.block.Blocks.*;
 import static net.mysticcreations.true_end.init.TEDimKeys.NWAD;
-import static net.mysticcreations.true_end.mechanics.DimSwapToBTD.BlockPosRandomX;
-import static net.mysticcreations.true_end.mechanics.DimSwapToBTD.BlockPosRandomZ;
 
 public class SoundPlayer {
     public static void onPlayerTick(Player player) {
@@ -76,18 +74,19 @@ public class SoundPlayer {
     }
 
     public static void repeatSound(ServerPlayer player, Integer delay, SoundEvent soundEvent) {
-        int soundX = BlockPosRandomX / 4;
-        int soundY = 1 + (int) (Math.random() * ((8 - 1) + 1));
-        int soundZ = BlockPosRandomZ / 4;
+        // Small random offset around the player position for spatial variety
+        double soundX = player.getX() + (Math.random() * 8 - 4);
+        double soundY = player.getY() + (Math.random() * 4);
+        double soundZ = player.getZ() + (Math.random() * 8 - 4);
         Level level = player.level();
         if (level.isClientSide()) return;
 
-        TrueEnd.queueServerWork(delay, () -> {
+        TrueEnd.wait(delay, () -> {
             level.playSound(
-                    null,
-                    BlockPos.containing(soundX, soundY, soundZ),
-                    soundEvent,
-                    SoundSource.NEUTRAL, 1, 1);
+                player,
+                BlockPos.containing(soundX, soundY, soundZ),
+                soundEvent,
+                SoundSource.NEUTRAL, 1, 1);
         });
     }
 }
