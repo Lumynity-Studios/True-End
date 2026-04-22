@@ -15,10 +15,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "net.mysticcreations.true_end.client.fabric.FabricClient"
+      "net.lumynity.true_end.client.fabric.FabricClient"
     ],
     "main": [
-      "net.mysticcreations.true_end.fabric.TrueEndFabric"
+      "net.lumynity.true_end.fabric.TrueEndFabric"
     ]
   },
   "mixins": [
@@ -29,7 +29,7 @@
     "fabricloader": ">=${fabric_loader_version}",
     "fabric-api": ">=${fabric_api_version}",
     "minecraft": "${minecraft_version_constraint}",
-    "lumynlib": "*",
+
     "architectury": ">=${architectury_api}",
     "terrablender": ">=${terrablender}"
   }
