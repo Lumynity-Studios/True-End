@@ -9,9 +9,11 @@ import net.mysticcreations.true_end.TrueEnd;
 
 public class TESounds {
     public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(TrueEnd.MOD_ID,Registries.SOUND_EVENT);
+
     private static RegistrySupplier<SoundEvent> sound(String name) {
         return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(TrueEnd.asResource(name)));
     }
+
     public static final RegistrySupplier<SoundEvent> VINE_BOOM = sound("vine_boom");
     public static final RegistrySupplier<SoundEvent> MOD_CREDITS_MUSIC = sound("back_in_the_game");
     public static final RegistrySupplier<SoundEvent> MUSIC_FARLANDS = sound("farlands");

@@ -1,50 +1,54 @@
-modLoader = "javafml"
-loaderVersion = "[47,)"
-issueTrackerURL = "https://github.com/Mystic-Creations/True-End/issues"
-license = "MIT"
+modLoader="javafml"
+loaderVersion="[0,)"
+issueTrackerURL = "https://github.com/Lumynity-Studios/True-End/issues"
+license = "${mod_license}"
 
 [[mods]]
-modId = "true_end"
-version = "${version}"
-displayName = "True End"
-displayURL = "https://modrinth.com/mod/true_end"
-authors = "Mystic Creations Team"
-description = '''
-
-'''
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+description = "${mod_description}"
+authors = "${mod_authors}"
 logoFile = "icon.png"
 
-[[dependencies.true_end]]
-modId = "forge"
-mandatory = true
-versionRange = "[47.5,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.true_end]]
+[[dependencies.${mod_id}]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,)"
+versionRange = "${minecraft_version_constraint}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.true_end]]
+[[dependencies.${mod_id}]]
+modId = "forge"
+mandatory = true
+versionRange = "[${forge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+#[[dependencies.${mod_id}]]
+#modId = "lumynlib"
+#mandatory = true
+#versionRange = "[1,)"
+#ordering = "NONE"
+#side = "BOTH"
+
+[[dependencies.${mod_id}]]
 modId = "architectury"
 mandatory = true
-versionRange = "[9.2.14,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.true_end]]
-modId = "terrablender"
-mandatory = true
-versionRange = "[3.0.1.10,)"
+versionRange = "[${architectury_api},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.true_end]]
+[[dependencies.${mod_id}]]
+modId = "terrablender"
+mandatory = true
+versionRange = "[${terrablender},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
 modId = "nostalgic_tweaks"
 mandatory = false
+versionRange = "[0,)"
 ordering = "AFTER"
-versionRange = "2.0.0-beta.910"
 side = "BOTH"

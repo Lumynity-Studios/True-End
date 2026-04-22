@@ -1,41 +1,36 @@
 {
   "schemaVersion": 1,
-  "id": "true_end",
-  "version": "${version}",
-  "name": "True End",
-  "description": "Remember the end poem? Wake up, Player.",
-  "authors": [
-    "Mystic Creations Team"
-  ],
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": ["${mod_authors}"],
   "contact": {
     "homepage": "https://modrinth.com/mod/true_end",
-    "sources": "https://github.com/Mystic-Creations/True-End",
-    "issues": "https://github.com/Mystic-Creations/True-End"
+    "sources": "https://github.com/Lumynity-Studios/True-End",
+    "issues": "https://github.com/Lumynity-Studios/True-End"
   },
-  "license": "MIT",
+  "license": "${mod_license}",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.mysticcreations.true_end.fabric.TrueEndFabric"
-    ],
     "client": [
       "net.mysticcreations.true_end.client.fabric.FabricClient"
     ],
-    "mixinsquared": [
-      "net.mysticcreations.true_end.mixinsquared.fabric.CancelPerlinNoiseOverwrite"
+    "main": [
+      "net.mysticcreations.true_end.fabric.TrueEndFabric"
     ]
   },
   "mixins": [
-    "true_end.mixins.json",
-    "true_end_fabric.mixins.json"
+    "${mod_id}.mixins.json",
+    "${mod_id}-fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.14",
-    "minecraft": "~1.20.1",
-    "java": ">=17",
-    "architectury": ">=9.2.14",
-    "terrablender": ">=3.0.1.10",
-    "fabric-api": "*"
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "minecraft": "${minecraft_version_constraint}",
+    "lumynlib": "*",
+    "architectury": ">=${architectury_api}",
+    "terrablender": ">=${terrablender}"
   }
 }

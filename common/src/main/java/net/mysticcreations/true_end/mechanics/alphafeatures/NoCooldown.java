@@ -25,7 +25,7 @@ public class NoCooldown {
     }
 
     public static void onPlayerRespawn(ServerPlayer player, boolean bl) {
-        ResourceKey<Level> toDim = ((ServerPlayer) player).getRespawnDimension();
+        ResourceKey<Level> toDim = player.getRespawnDimension();
 
         applyCooldown(player, toDim);
     }
